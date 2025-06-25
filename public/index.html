@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Painel de Bots</title>
+  <script src="/socket.io/socket.io.js"></script>
+  <style>
+    body { font-family: monospace; background: #111; color: #0f0; padding: 1rem; }
+    .log { white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+  <h2>Logs dos 3 Bots Python (via Glitch)</h2>
+  <div id="logs" class="log"></div>
+  <script>
+    const socket = io();
+    const logs = document.getElementById("logs");
+
+    socket.on("log", msg => {
+      logs.innerText += msg + "\n";
+      logs.scrollTop = logs.scrollHeight;
+    });
+  </script>
+</body>
+</html>
